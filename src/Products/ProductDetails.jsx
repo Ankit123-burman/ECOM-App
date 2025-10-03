@@ -1,4 +1,6 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
+import ProductGrid from "./ProductGrid";
 
 const selectedProduct = {
   name: "shirt",
@@ -21,26 +23,62 @@ const selectedProduct = {
   ],
 };
 
-
+const similarProduct = [
+  {
+    id: 1,
+    name: "product 1",
+    price: 100,
+    image: [{ url: "https://picsum.photos/200/300?random=7" }],
+  },
+  {
+    id: 2,
+    name: "product 2",
+    price: 100,
+    image: [{ url: "https://picsum.photos/200/300?random=5" }],
+  },
+  {
+    id: 3,
+    name: "product 3",
+    price: 100,
+    image: [{ url: "https://picsum.photos/200/300?random=6" }],
+  },
+  {
+    id: 4,
+    name: "product 4",
+    price: 100,
+    image: [{ url: "https://picsum.photos/200/300?random=3" }],
+  },
+];
 
 export const ProductDetails = () => {
-  const [mainImage, setMainImage] = useState(" ")
-  useEffect(() => {
-    if (selectedProduct?.image?.length > 0) {
-      setMainImage(selectedProduct.image[0].url)
-    }
-  }, [selectedProduct])
+  const [mainImage, setMainImage] = useState(
+    selectedProduct.image[0]?.url || null
+  );
 
-  const [selectedSize, setSelectedSize] = useState('')
-  const [selectedColor, setSeclectedColor] = useState(null)
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isButtonDisable, setIsButtonDisable] = useState(false);
 
-
   const handleQuantityChange = (action) => {
-    if (action === 'plus') setQuantity((prev) => prev + 1);
-    if (action === "minus" && quantity > 1) setQuantity((prev) => prev - 1)
-  }
+    if (action === "plus") setQuantity((prev) => prev + 1);
+    if (action === "minus" && quantity > 1) setQuantity((prev) => prev - 1);
+  };
+
+  const handleAddtoCart = () => {
+    if (!selectedSize || !selectedColor) {
+      toast.error("Select a size and color before adding to cart", {
+        duration: 1000,
+      });
+      return;
+    }
+    setIsButtonDisable(true);
+
+    setTimeout(() => {
+      toast.success("Product added to cart", { duration: 1000 });
+      setIsButtonDisable(false);
+    }, 500);
+  };
 
   return (
     <div className="p-6">
@@ -80,75 +118,118 @@ export const ProductDetails = () => {
               />
             ))}
           </div>
-          {/*right*/}
-          <div className='md:1/2 md:ml-10' >
-            <h1 className='text-2xl md:text-3xl font-semibold mb-2' >
+
+          {/* Product Info */}
+          <div className="md:w-1/2 md:ml-10">
+            <h1 className="text-2xl md:text-3xl font-semibold mb-2">
               {selectedProduct.name}
             </h1>
-            <p className='text-lg text-gray-600 mb-1 line-through' >
-              {selectedProduct.originalPrice && `${selectedProduct.originalPrice}`}
+            <p className="text-lg text-gray-600 mb-1 line-through">
+              {selectedProduct.originalPrice &&
+                `${selectedProduct.originalPrice}`}
             </p>
             <p className="text-xl text-gray-500 mb-2">
               ${selectedProduct.price}
             </p>
-            <p className="text-gray-600 mb-4">
-              {selectedProduct.description}
-            </p>
-            <div className='mb-4 ' >
+            <p className="text-gray-600 mb-4">{selectedProduct.description}</p>
+
+            {/* Color Selection */}
+            <div className="mb-4">
               <p className="text-gray-700">Color:</p>
-              <div className="felx gap-2 mt-2">
+              <div className="flex gap-2 mt-2">
                 {selectedProduct.colors.map((color) => (
-                  <button key={color}
-                    className={`w-8 h-8 rounded-full border 
-            ${selectedColor === color ? "border-4 border-black" : "border border-gray-300"}`}
-                    onClick={() => setSeclectedColor(color)}
+                  <button
+                    key={color}
+                    className={`w-8 h-8 rounded-full border ${
+                      selectedColor === color
+                        ? "border-4 border-black"
+                        : "border border-gray-300"
+                    }`}
+                    onClick={() => setSelectedColor(color)}
                     style={{
-                      backgroundColor: color.toLocaleLowerCase(),
-                      filter: "brightness(0.5)",
+                      backgroundColor: color.toLowerCase(),
                     }}
                   ></button>
                 ))}
               </div>
             </div>
 
-            <div className='mb-4 ' >
-              <p className='text-gray-700' >Size:</p>
-              <div className='felx gap-2 mt-2' >
+            {/* Size Selection */}
+            <div className="mb-4">
+              <p className="text-gray-700">Size:</p>
+              <div className="flex gap-2 mt-2">
                 {selectedProduct.sizes.map((size) => (
-                  <button key={size} onClick={() => setSelectedSize(size)} className={`px-4 py-2 rounded border  ${selectedSize === size ? "bg-black text-white" : ""} `}  >
+                  <button
+                    key={size}
+                    onClick={() => setSelectedSize(size)}
+                    className={`px-4 py-2 rounded border ${
+                      selectedSize === size ? "bg-black text-white" : ""
+                    }`}
+                  >
                     {size}
                   </button>
                 ))}
               </div>
             </div>
-            <div className='mb-6 ' >
-              <p className='text-gray-700' >Quantity:</p>
-              <div className='felx items-center space-x-4 mt-2' >
-                <button onClick={() => handleQuantityChange("minus")} className='px-2 py-1 bg-gray-200 rounded text-lg' >-</button>
-                <span className='text-lg ' >{quantity}</span>
-                <button onClick={() => handleQuantityChange("plus")} className='px-2 py-1 bg-gray-200 rounded text-lg' >+</button>
+
+            {/* Quantity */}
+            <div className="mb-6">
+              <p className="text-gray-700">Quantity:</p>
+              <div className="flex items-center space-x-4 mt-2">
+                <button
+                  onClick={() => handleQuantityChange("minus")}
+                  className="px-2 py-1 bg-gray-200 rounded text-lg"
+                >
+                  -
+                </button>
+                <span className="text-lg">{quantity}</span>
+                <button
+                  onClick={() => handleQuantityChange("plus")}
+                  className="px-2 py-1 bg-gray-200 rounded text-lg"
+                >
+                  +
+                </button>
               </div>
             </div>
-            <button className='bg-black text-white py-2 px-6 rounded w-full mb-4' >
-              ADD TO CART
+
+            {/* Add to Cart Button */}
+            <button
+              disabled={isButtonDisable}
+              onClick={handleAddtoCart}
+              className={`bg-black text-white py-2 px-6 rounded w-full mb-4 ${
+                isButtonDisable
+                  ? "cursor-not-allowed opacity-50"
+                  : "hover:bg-gray-900"
+              }`}
+            >
+              {isButtonDisable ? "Adding..." : "ADD TO CART"}
             </button>
 
-            <div className='mt-10 text-gray-700' >
-              <h3 className='text-xl font-bold mb-4 ' >Characteristics:</h3>
-              <table className='w-full text-left text-sm text-gray-600'>
+            {/* Characteristics */}
+            <div className="mt-10 text-gray-700">
+              <h3 className="text-xl font-bold mb-4">Characteristics:</h3>
+              <table className="w-full text-left text-sm text-gray-600">
                 <tbody>
                   <tr>
-                    <td className='py-1' >Brand</td>
-                    <td className='py-1' >{selectedProduct.brand}</td>
+                    <td className="py-1">Brand</td>
+                    <td className="py-1">{selectedProduct.brand}</td>
                   </tr>
                   <tr>
-                    <td className='py-1' >Matrial</td>
-                    <td className='py-1' >{selectedProduct.material}</td>
+                    <td className="py-1">Material</td>
+                    <td className="py-1">{selectedProduct.material}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+
+        {/* Similar Products */}
+        <div className="mt-20">
+          <h2 className="text-2xl text-center font-medium mb-4">
+            You May Like
+          </h2>
+          <ProductGrid products={similarProduct} />
         </div>
       </div>
     </div>

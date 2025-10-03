@@ -2,11 +2,13 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router'
 import UserLayout from './component/layout/UserLayout'
 import Home from './Pages/Home'
+import {Toaster} from "sonner"
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <Toaster position="top-right"/>
         <Routes>
           <Route path='/' element={<UserLayout />} >
              <Route index element={<Home/>}/>
