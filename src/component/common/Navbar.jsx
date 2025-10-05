@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link to="/" className="text-2xl font-medium" >Rabbit</Link>
         </div>
         <div className='hidden md:flex space-x-6' >
-          <Link to="#" className="text-black text-sm font-medium uppercase " >
+          <Link to="/collections/all" className="text-black text-sm font-medium uppercase " >
             MEN
           </Link>
           <Link to="#" className="text-black text-sm font-medium uppercase " >
