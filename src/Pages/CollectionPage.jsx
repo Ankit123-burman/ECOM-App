@@ -6,15 +6,15 @@ import ProductGrid from '../Products/ProductGrid';
 
 function CollectionPage() {
     const [products, setProduct] = useState([]);
-    const sidebarRef  = useRef(null);
-    const [isSidebarOpen,setIsSidebarOpen] = useState(false);
+    const sidebarRef = useRef(null);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    const toggleSidebar = () =>{
+    const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     }
 
-    const handleClickOutSide = (e) =>{
-        if(sidebarRef.current && !sidebarRef.current.contains(e.target))
+    const handleClickOutSide = (e) => {
+        if (sidebarRef.current && !sidebarRef.current.contains(e.target))
             setIsSidebarOpen(false);
     }
 
@@ -36,7 +36,7 @@ function CollectionPage() {
                 { id: 6, name: "Elegant Evening Gown", price: 3499, image: [{ url: "https://picsum.photos/400/600?random=12" }] },
                 { id: 7, name: "Casual Denim Dress", price: 1899, image: [{ url: "https://picsum.photos/400/600?random=13" }] },
                 { id: 8, name: "Classic Black Dress", price: 2499, image: [{ url: "https://picsum.photos/400/600?random=14" }] },
-            ]; 
+            ];
             setProduct(fetchedProducts);
         }, 1000);
     }, []);
@@ -49,18 +49,25 @@ function CollectionPage() {
             </button>
 
             {/*filter sidebar*/}
-            <div ref={sidebarRef} className={`${isSidebarOpen ? "translate-x-0" : "-translate-full"} fixed inset-y-0 z-50 w-64 bg-white
-            left-0 overflow-y-auto transition-transform duration-300 lg:static lg:translate-x-0`}>
-                <FilterSidebar/>
+            <div ref={sidebarRef} className={`
+    /* Mobile Classes */
+    ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+    fixed inset-y-0 z-50 w-64 bg-white left-0 overflow-y-auto 
+    transition-transform duration-300 
+    
+    /* Desktop Classes: Always applied on large screens */
+    lg:translate-x-0 lg:static lg:block
+  `}>
+                <FilterSidebar />
             </div>
             <div className='felx-grow p-4 ' >
                 <h2 className='text-2xl uppercase mb-4 '>All Collection</h2>
 
-                
+
                 {/*sort option*/}
-                <SortOptions/>
+                <SortOptions />
                 {/*Product grid*/}
-                <ProductGrid products={products}  />
+                <ProductGrid products={products} />
             </div>
         </div>
     );
