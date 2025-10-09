@@ -101,6 +101,14 @@ function FilterSidebar() {
     navigate(`?${params.toString()}`)
   }
 
+  const handelPriceChnage =(e)=>{
+    const newPrice = e.target.value;
+    setPriceRange([0,newPrice])
+    const newFilters = {...filter, minPrice:0,maxPrice:newPrice}
+    setFilter(filter)
+    updateUrl(newFilters)
+  }
+
   return (
     <div className='p-4' >
       <h3 className='text-xl font-medium text-gray-800 mb-4' >Filter</h3>
@@ -213,6 +221,8 @@ function FilterSidebar() {
         </label>
         <input type="range"
           name="priceRange"
+          value={priceRange[1]}
+          onChange={handelPriceChnage}
           min={0}
           max={100}
           className='w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer'
