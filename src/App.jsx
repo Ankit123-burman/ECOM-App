@@ -9,6 +9,7 @@ import Profile from './Pages/Profile'
 import CollectionPage from './Pages/CollectionPage'
 import { ProductDetails } from './Products/ProductDetails'
 import CheckOut from './component/Cart/CheckOut'
+import OrderConformation from './Pages/OrderConformation'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
              <Route path="/checkout" element={<CheckOut/>}/>
              <Route path='/collections/:collection' element={<CollectionPage/>}/>
              <Route path='/product/:id' element={<ProductDetails/>}/>
+             <Route path='order-confirmation' element={<OrderConformation/>}/>
           </Route>
           {/*admin route*/}
         </Routes>
