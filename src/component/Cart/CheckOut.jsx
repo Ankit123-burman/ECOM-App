@@ -26,7 +26,7 @@ function CheckOut() {
     const navigate = useNavigate();
     const [checkoutId, setCheckoutId] = useState(null)
     const [shippingAddresh, setShippingAddress] = useState({
-        postalCode: "",
+        firstname: "",
         lastName: "",
         addresh: "",
         city:"",
@@ -66,11 +66,11 @@ function CheckOut() {
                     <div className='' >
                         <label className='block text-gray-700'>First Name</label>
                         <input type="text"
-                        value={shippingAddresh.postalCode}
+                        value={shippingAddresh.firstname}
                         onChange={(e)=>
                             setShippingAddress({
                                 ...shippingAddresh,
-                                postalCode: e.target.value,
+                                firstname: e.target.value,
                             })
                         }
                         className='w-full p-2 border rounded' required
@@ -106,7 +106,7 @@ function CheckOut() {
                      <div className='' >
                         <label className='block text-gray-700'>City Name</label>
                         <input type="text"
-                        value={shippingAddresh.Ciry}
+                        value={shippingAddresh.city}
                         onChange={(e)=>
                             setShippingAddress({
                                 ...shippingAddresh,
