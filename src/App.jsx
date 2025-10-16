@@ -12,6 +12,7 @@ import CheckOut from './component/Cart/CheckOut'
 import OrderConformation from './Pages/OrderConformation'
 import OrderDetails from './Pages/OrderDetails'
 import MyOrderPage from './Pages/MyOrderPage'
+import AdminLayout from './component/Admin/AdminLayout'
 
 function App() {
   return (
@@ -30,8 +31,10 @@ function App() {
              <Route path='order-confirmation' element={<OrderConformation/>}/>
              <Route path="order/:id" element={<OrderDetails/>}/>
              <Route path="/my-orders" element={<MyOrderPage/>}/>
+            
           </Route>
           {/*admin route*/}
+           <Route path="admin" element={<AdminLayout/>}/>
         </Routes>
       </BrowserRouter>
     </>

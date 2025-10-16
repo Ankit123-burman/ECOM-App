@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import Searchbar from './Searchbar'
 import { useState } from 'react';
 import { HiOutlineUser, HiOutlineShoppingBag, HiBars3BottomRight } from "react-icons/hi2";
 import CartDrawer from '../layout/CartDrawer';
 import { IoMdClose } from 'react-icons/io';
 const Navbar = () => {
-
+  
   const [drawerOpen, setDrawarOpen] = useState(false);
   const [navDrawerOpen, setNavDrawerOpen] = useState(false)
 
@@ -17,6 +17,7 @@ const Navbar = () => {
   const toggleCartDrawer = () => {
     setDrawarOpen(!drawerOpen);
   }
+  
   return (
     <>
       <nav className='container mx-auto flex items-center justify-between py-4 px-6' >
@@ -37,7 +38,16 @@ const Navbar = () => {
             Bottom Wear
           </Link>
         </div>
+
+        {/*right icons*/}
         <div className='flex items-center space-x-4' >
+          <Link
+              to="/admin"
+              className="block bg-black rounded text-white px-4 py-1 text-sm"
+            >
+             Admin
+          </Link>
+
           <Link to='/profile' className='hover:text-black' >
             <HiOutlineUser className='h-6 w-6 text-gray-700' />
           </Link>
