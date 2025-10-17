@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaBars } from 'react-icons/fa';
 import AdminSidebar from './AdminSidebar';
+import AdminHome from '../../Pages/AdminHome';
 
 function AdminLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -38,7 +39,8 @@ function AdminLayout() {
 
       {/* Main Content */}
       <div className="flex-1 p-6 overflow-auto">
-        <h2 className="text-2xl font-semibold">Main Content Area</h2>
+        <h2 className="text-2xl font-semibold"></h2>
+        <AdminHome/>
       </div>
     </div>
   );

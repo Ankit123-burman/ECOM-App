@@ -13,6 +13,8 @@ import OrderConformation from './Pages/OrderConformation'
 import OrderDetails from './Pages/OrderDetails'
 import MyOrderPage from './Pages/MyOrderPage'
 import AdminLayout from './component/Admin/AdminLayout'
+import AdminHome from './Pages/AdminHome'
+import UserManagement from './component/Admin/UserManagement'
 
 function App() {
   return (
@@ -34,7 +36,10 @@ function App() {
             
           </Route>
           {/*admin route*/}
-           <Route path="admin" element={<AdminLayout/>}/>
+          <Route path="/admin" element={<AdminLayout/>}/>
+           <Route index element={<AdminHome/>}/>
+           <Route path='users' element={<UserManagement/>}/>
+          <Route/>
         </Routes>
       </BrowserRouter>
     </>
