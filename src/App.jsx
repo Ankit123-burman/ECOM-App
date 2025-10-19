@@ -17,6 +17,7 @@ import AdminHome from './Pages/AdminHome'
 import UserManagement from './component/Admin/UserManagement'
 import Products from './component/Admin/Products'
 import OrderManagement from './component/Admin/OrderManagement'
+import EditProduct from './component/Admin/EditProduct'
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="products" element={<Products />} />
             <Route path="users" element={<UserManagement />} />
             <Route path="orders" element={<OrderManagement />} />
+            <Route path="product/:id/edit" element={<EditProduct />} />
           </Route>
   
         </Routes>
