@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router';
-import heroImg from '../../assets/rabbit-assets/assets/rabbit-hero.webp';
+// import heroImg from '';
 
 const Hero = () => {
   return (
-   <section className='relative' >
-    <img src={heroImg} alt="Rabbit" className='w-full h-[400px] md:h-[600px] lg:h-[750px] object-cover'/>
+   <section id='bg' className='relative' >
+    <img src="../../assets/rabbit-hero.webp"  className='w-full h-[400px] md:h-[600px] lg:h-[750px] object-cover'/>
 
-    <div className='absolute bg-opacity-5 inset-0 bg-black flex items-center justify-center' >
+    <div id='im'  className='absolute bg-opacity-5 inset-0  flex items-center justify-center' >
       <div className='text-center text-white p-6'>
         <h1 className='text-4xl md:text9xl font-bold tracking-tighter uppercase mb-4' >
           Vacation <br />Ready
