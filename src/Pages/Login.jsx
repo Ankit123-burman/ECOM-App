@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
-import login from '../assets/rabbit-assets/assets/login.webp'
+import login from '../assets/login.jpg'
+// import login from '../assets/rabbit-assets/assets/login.webp'
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");

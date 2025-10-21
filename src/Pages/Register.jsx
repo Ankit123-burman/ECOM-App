@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import register from '../assets/rabbit-assets/assets/register.webp'
-
+// import register from '../assets/rabbit-assets/assets/register.webp'
+import register from '../assets/register.jpg'
 function Register() {
 
     const [email, setEmail] = useState("")
