@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 const Hero = () => {
   return (
    <section id='bg' className='relative' >
-    <img className='w-full h-[400px] md:h-[600px] lg:h-[750px] object-cover'/>
+    <img scr="#" className='w-full h-[400px] md:h-[600px] lg:h-[750px] object-cover'/>
 
     <div id='im'  className='absolute bg-opacity-5 inset-0  flex items-center justify-center' >
       <div className='text-center text-white p-6'>
