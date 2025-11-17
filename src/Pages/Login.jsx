@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
 import login from '../assets/login.jpg'
+import { loginUser } from '../redux/slices/authSlice';
 // import login from '../assets/rabbit-assets/assets/login.webp'
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch();
 
      const handelSubmit = (e) => {
         e.preventDefault();

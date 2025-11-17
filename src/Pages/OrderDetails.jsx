@@ -12,7 +12,7 @@ function OrderDetails() {
             createdAt: new Date(),
             isPaid: true,
             isDelivered: "false",
-            paymentMethord:"Paypal",
+            paymentMethod:"Paypal",
             shippingMethod: "Standaed",
             shippingAddress:{city:"NewYork",country:"USA"},
             orderItems:[
