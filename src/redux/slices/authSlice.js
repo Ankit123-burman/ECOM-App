@@ -48,7 +48,7 @@ export const registerUser = createAsyncThunk("auth/registerUserr",
 
             return response.data.user; //return the user object from the respone
         }catch(error){
-            return rejectWithValue(error.response.date)
+            return rejectWithValue(error.response.data)
         }
     });
 
