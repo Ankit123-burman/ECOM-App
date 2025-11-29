@@ -1,5 +1,5 @@
 import React from 'react'
-import image from '../../../rabbit-assets/assets/Men2.jpg'
+import image from '../../../public/assets/Men2.jpg'
 import {RiDeleteBin3Line} from 'react-icons/ri'
 
 const CartItem = () => {

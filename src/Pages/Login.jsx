@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
-import login from '../../rabbit-assets/assets/Women3.jpg'
+import login from '../../public/assets/Women3.jpg'
 import { loginUser } from '../redux/slices/authSlice';
 import {useDispatch} from "react-redux";
 function Login() {

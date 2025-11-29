@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import mensCollection from "../../rabbit-assets/assets/men3.jpg"
-import womensCollection from "../../rabbit-assets/assets/WOmen1.jpg"
+import mensCollection from "../../public/assets/men3.jpg"
+import womensCollection from "../../public/assets/women.png"
 function GenderCollection() {
   return (
     <div>

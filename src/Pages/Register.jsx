@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import register from '../../rabbit-assets/assets/Men4.jpg'
+import register from '../../public/assets/Men4.jpg'
 import { useDispatch } from 'react-redux'
 import { registerUser } from '../redux/slices/authSlice'
 function Register() {
