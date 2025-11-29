@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
-// import login from '../assets/login.jpg'
+import login from '../../rabbit-assets/assets/Women3.jpg'
 import { loginUser } from '../redux/slices/authSlice';
 import {useDispatch} from "react-redux";
-// import login from '../assets/rabbit-assets/assets/login.webp'
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");

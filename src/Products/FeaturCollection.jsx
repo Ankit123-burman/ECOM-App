@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import featured from '../../rabbit-assets/assets/featured.webp'
+import featured from '../../rabbit-assets/assets/Men2.jpg'
 
 function FeaturCollection() {
   return (
