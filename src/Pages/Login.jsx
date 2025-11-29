@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router';
-import login from '../assets/login.jpg'
+// import login from '../assets/login.jpg'
 import { loginUser } from '../redux/slices/authSlice';
 import {useDispatch} from "react-redux";
 // import login from '../assets/rabbit-assets/assets/login.webp'
